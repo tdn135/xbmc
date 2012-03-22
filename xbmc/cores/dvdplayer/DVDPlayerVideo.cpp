@@ -492,7 +492,7 @@ void CDVDPlayerVideo::Process()
 
       bRequestDrop = false;
       iDropDirective = CalcDropRequirement(pts);
-      if (iDropDirective & EOS_LATE)
+      if (iDropDirective & EOS_VERYLATE)
       {
         if (m_bAllowDrop)
         {
@@ -501,10 +501,8 @@ void CDVDPlayerVideo::Process()
         }
       }
       int codecControl = 0;
-      if (iDropDirective & (EOS_VERYLATE | EOS_BUFFER_LEVEL))
+      if (iDropDirective & EOS_BUFFER_LEVEL)
       {
-        if (iDropDirective & EOS_VERYLATE)
-          codecControl |= DVP_FLAG_SKIP_PROC;
         if (iDropDirective & EOS_BUFFER_LEVEL)
           codecControl |= DVP_FLAG_DRAIN;
       }
@@ -1729,10 +1727,7 @@ int CDVDPlayerVideo::CalcDropRequirement(double pts)
       // is frame allowed to skip
       if (m_iNrOfPicturesNotToSkip <= 0)
       {
-        result |= EOS_LATE;
-
-        if (iLateness < -3/m_fFrameRate)
-          result |= EOS_VERYLATE;
+        result |= EOS_VERYLATE;
 
         // drop in output
         if (m_droppingStats.m_dropRequests > 7 && g_graphicsContext.IsFullScreenVideo())
