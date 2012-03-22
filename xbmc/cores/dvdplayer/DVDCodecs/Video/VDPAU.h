@@ -206,7 +206,6 @@ struct CVdpauProcessedPicture
   DVDVideoPicture DVDPic;
   vdpau_render_state *render;
   VdpOutputSurface outputSurface;
-  uint8_t numDecodedPics;
 };
 
 /**
