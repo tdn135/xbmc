@@ -1869,6 +1869,7 @@ bool COutput::Init()
     return false;
 
   m_xvbaError = false;
+  m_processPicture.render = 0;
 
   return true;
 }
@@ -1889,6 +1890,13 @@ void COutput::Flush()
     CSingleLock lock(*m_config.videoSurfaceSec);
     if (pic.render)
       pic.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+  }
+
+  if (m_processPicture.render)
+  {
+    CSingleLock lock(*m_config.videoSurfaceSec);
+    m_processPicture.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+    m_processPicture.render = 0;
   }
 
   Message *msg;
@@ -2078,9 +2086,30 @@ void COutput::ProcessReturnPicture(CXvbaRenderPicture *pic)
     xvba_render_state *render = m_bufferPool.glSurfaces[pic->sourceIdx].render;
     if (render)
     {
-      CSingleLock lock(*m_config.videoSurfaceSec);
-      render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
-      render = 0;
+      // check if video surface if referenced by other glSurfaces
+      bool referenced(false);
+      for (unsigned int i=0; i<m_bufferPool.glSurfaces.size();++i)
+      {
+        if (i == pic->sourceIdx)
+          continue;
+        if (m_bufferPool.glSurfaces[i].render == render)
+        {
+          referenced = true;
+          break;
+        }
+      }
+      if (m_processPicture.render == render)
+        referenced = true;
+
+      // release video surface
+      if (!referenced)
+      {
+        CSingleLock lock(*m_config.videoSurfaceSec);
+        render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+      }
+
+      // unreference video surface
+      m_bufferPool.glSurfaces[pic->sourceIdx].render = 0;
     }
     m_bufferPool.glSurfaces[pic->sourceIdx].used = false;
     return;
@@ -2164,6 +2193,7 @@ void COutput::FiniCycle()
 //  { CSingleLock lock(*m_config.videoSurfaceSec);
 //    m_processPicture.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
 //  }
+  m_processPicture.render = 0;
   m_config.stats->DecDecoded();
 }
 
