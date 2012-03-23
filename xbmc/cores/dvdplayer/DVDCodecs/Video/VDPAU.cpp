@@ -1340,7 +1340,8 @@ void CMixer::StateMachine(int signal, Protocol *port, Message *msg)
             m_extTimeout = 1000;
             return;
           }
-          m_outputSurfaces.pop();
+          if (m_processPicture.DVDPic.format != DVDVideoPicture::FMT_VDPAU_420)
+            m_outputSurfaces.pop();
           m_config.stats->IncProcessed();
           m_dataPort.SendInMessage(CMixerDataProtocol::PICTURE,&m_processPicture,sizeof(m_processPicture));
           if (m_mixersteps > 1)
@@ -1400,7 +1401,8 @@ void CMixer::StateMachine(int signal, Protocol *port, Message *msg)
              m_extTimeout = 1000;
              return;
            }
-           m_outputSurfaces.pop();
+           if (m_processPicture.DVDPic.format != DVDVideoPicture::FMT_VDPAU_420)
+             m_outputSurfaces.pop();
            m_config.stats->IncProcessed();
            m_dataPort.SendInMessage(CMixerDataProtocol::PICTURE,&m_processPicture,sizeof(m_processPicture));
            FiniCycle();
