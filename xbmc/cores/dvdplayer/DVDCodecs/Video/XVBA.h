@@ -249,6 +249,7 @@ protected:
   bool DestroyGlxContext();
   bool EnsureBufferPool();
   void ReleaseBufferPool();
+  void PreReleaseBufferPool();
   CEvent m_outMsgEvent;
   CEvent *m_inMsgEvent;
   int m_state;

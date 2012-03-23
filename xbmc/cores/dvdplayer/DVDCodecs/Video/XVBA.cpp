@@ -1605,6 +1605,7 @@ void COutput::StateMachine(int signal, Protocol *port, Message *msg)
         case COutputControlProtocol::PRECLEANUP:
           m_state = O_TOP_CONFIGURED_WAIT_RES1;
           Flush();
+          PreReleaseBufferPool();
           msg->Reply(COutputControlProtocol::ACC);
           return;
         default:
@@ -2259,6 +2260,8 @@ void COutput::ReleaseBufferPool()
   {
     for (unsigned int i = 0; i < m_bufferPool.glSurfaces.size(); ++i)
     {
+      if (!m_bufferPool.glSurfaces[i].glSurface)
+        continue;
       g_XVBA_vtable.DestroySurface(m_bufferPool.glSurfaces[i].glSurface);
       glDeleteTextures(1, &m_bufferPool.glSurfaces[i].texture);
     }
@@ -2274,6 +2277,25 @@ void COutput::ReleaseBufferPool()
       { CSingleLock lock(*m_config.videoSurfaceSec);
         m_bufferPool.glSurfaces[idx].render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
         m_bufferPool.glSurfaces[idx].render = 0;
+      }
+    }
+  }
+}
+
+void COutput::PreReleaseBufferPool()
+{
+  CSingleLock lock(m_bufferPool.renderPicSec);
+
+  if (m_config.useSharedSurfaces)
+  {
+    for (unsigned int i = 0; i < m_bufferPool.glSurfaces.size(); ++i)
+    {
+      if (!m_bufferPool.glSurfaces[i].used)
+      {
+        g_XVBA_vtable.DestroySurface(m_bufferPool.glSurfaces[i].glSurface);
+        glDeleteTextures(1, &m_bufferPool.glSurfaces[i].texture);
+        m_bufferPool.glSurfaces[i].glSurface = 0;
+        m_bufferPool.glSurfaces[i].used = true;
       }
     }
   }
