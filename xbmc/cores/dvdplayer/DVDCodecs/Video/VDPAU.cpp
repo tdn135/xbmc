@@ -881,12 +881,17 @@ void CDecoder::FFDrawSlice(struct AVCodecContext *s,
       return;
   }
 
+  uint64_t startTime = CurrentHostCounter();
   vdp_st = vdp->m_vdpauConfig.vdpProcs.vdp_decoder_render(vdp->m_vdpauConfig.vdpDecoder,
                                    render->surface,
                                    (VdpPictureInfo const *)&(render->info),
                                    render->bitstream_buffers_used,
                                    render->bitstream_buffers);
   vdp->CheckStatus(vdp_st, __LINE__);
+  uint64_t diff = CurrentHostCounter() - startTime;
+  if (diff*1000/CurrentHostFrequency() > 30)
+    CLog::Log(LOGWARNING,"CVDPAU::DrawSlice - VdpDecoderRender long decoding: %d ms", (int)((diff*1000)/CurrentHostFrequency()));
+
 }
 
 
