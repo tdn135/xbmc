@@ -1890,13 +1890,13 @@ void COutput::Flush()
     m_decodedPics.pop();
     CSingleLock lock(*m_config.videoSurfaceSec);
     if (pic.render)
-      pic.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+      pic.render->state &= ~(FF_XVBA_STATE_USED_FOR_RENDER | FF_XVBA_STATE_DECODED);
   }
 
   if (m_processPicture.render)
   {
     CSingleLock lock(*m_config.videoSurfaceSec);
-    m_processPicture.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+    m_processPicture.render->state &= ~(FF_XVBA_STATE_USED_FOR_RENDER | FF_XVBA_STATE_DECODED);
     m_processPicture.render = 0;
   }
 
@@ -1908,7 +1908,7 @@ void COutput::Flush()
       CXvbaDecodedPicture pic = *(CXvbaDecodedPicture*)msg->data;
       CSingleLock lock(*m_config.videoSurfaceSec);
       if (pic.render)
-        pic.render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+        pic.render->state &= ~(FF_XVBA_STATE_USED_FOR_RENDER | FF_XVBA_STATE_DECODED);
     }
     else if (msg->signal == COutputDataProtocol::RETURNPIC)
     {
@@ -2106,7 +2106,7 @@ void COutput::ProcessReturnPicture(CXvbaRenderPicture *pic)
       if (!referenced)
       {
         CSingleLock lock(*m_config.videoSurfaceSec);
-        render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+        render->state &= ~(FF_XVBA_STATE_USED_FOR_RENDER | FF_XVBA_STATE_DECODED);
       }
 
       // unreference video surface
@@ -2275,7 +2275,7 @@ void COutput::ReleaseBufferPool()
     if (m_bufferPool.glSurfaces[idx].render)
     {
       { CSingleLock lock(*m_config.videoSurfaceSec);
-        m_bufferPool.glSurfaces[idx].render->state &= ~FF_XVBA_STATE_USED_FOR_RENDER;
+        m_bufferPool.glSurfaces[idx].render->state &= ~(FF_XVBA_STATE_USED_FOR_RENDER | FF_XVBA_STATE_DECODED);
         m_bufferPool.glSurfaces[idx].render = 0;
       }
     }
