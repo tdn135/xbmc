@@ -882,6 +882,8 @@ void CDecoder::FFDrawSlice(struct AVCodecContext *s,
   }
 
   uint64_t startTime = CurrentHostCounter();
+  uint16_t decoded, processed, rend;
+  vdp->m_bufferStats.Get(decoded, processed, rend);
   vdp_st = vdp->m_vdpauConfig.vdpProcs.vdp_decoder_render(vdp->m_vdpauConfig.vdpDecoder,
                                    render->surface,
                                    (VdpPictureInfo const *)&(render->info),
@@ -890,7 +892,7 @@ void CDecoder::FFDrawSlice(struct AVCodecContext *s,
   vdp->CheckStatus(vdp_st, __LINE__);
   uint64_t diff = CurrentHostCounter() - startTime;
   if (diff*1000/CurrentHostFrequency() > 30)
-    CLog::Log(LOGWARNING,"CVDPAU::DrawSlice - VdpDecoderRender long decoding: %d ms", (int)((diff*1000)/CurrentHostFrequency()));
+    CLog::Log(LOGWARNING,"CVDPAU::DrawSlice - VdpDecoderRender long decoding: %d ms, dec: %d, proc: %d, rend: %d", (int)((diff*1000)/CurrentHostFrequency()), decoded, processed, rend);
 
 }
 
@@ -977,6 +979,8 @@ int CDecoder::Decode(AVCodecContext *avctx, AVFrame *pFrame, bool bSoftDrain, bo
         m_bufferStats.DecRender();
         m_bufferStats.Get(decoded, processed, render);
         retval |= VC_PICTURE;
+        msg->Release();
+        break;
       }
       msg->Release();
     }
@@ -1003,7 +1007,7 @@ int CDecoder::Decode(AVCodecContext *avctx, AVFrame *pFrame, bool bSoftDrain, bo
     }
     else
     {
-      if (decoded + processed + render < 6)
+      if (decoded < 4 && (processed + render) < 3)
       {
         retval |= VC_BUFFER;
       }
@@ -1313,7 +1317,10 @@ void CMixer::StateMachine(int signal, Protocol *port, Message *msg)
           else
           {
 //            if (m_extTimeout != 0)
+//            {
+//              SetPostProcFeatures(false);
 //              CLog::Log(LOGWARNING,"CVDPAU::Mixer timeout - decoded: %d, outputSurf: %d", (int)m_decodedPics.size(), (int)m_outputSurfaces.size());
+//            }
             m_extTimeout = 100;
           }
           return;
@@ -1348,6 +1355,7 @@ void CMixer::StateMachine(int signal, Protocol *port, Message *msg)
           if (m_processPicture.DVDPic.format != DVDVideoPicture::FMT_VDPAU_420)
             m_outputSurfaces.pop();
           m_config.stats->IncProcessed();
+          m_config.stats->DecDecoded();
           m_dataPort.SendInMessage(CMixerDataProtocol::PICTURE,&m_processPicture,sizeof(m_processPicture));
           if (m_mixersteps > 1)
           {
@@ -1381,7 +1389,10 @@ void CMixer::StateMachine(int signal, Protocol *port, Message *msg)
           else
           {
 //            if (m_extTimeout != 0)
+//            {
+//              SetPostProcFeatures(false);
 //              CLog::Log(LOGNOTICE,"---mixer wait2 decoded: %d, outputSurf: %d", (int)m_decodedPics.size(), (int)m_outputSurfaces.size());
+//            }
             m_extTimeout = 100;
           }
           return;
@@ -2230,7 +2241,7 @@ void CMixer::FiniCycle()
       tmp.render->state &= ~FF_VDPAU_STATE_USED_FOR_RENDER;
     }
     m_mixerInput.pop_back();
-    m_config.stats->DecDecoded();
+//    m_config.stats->DecDecoded();
   }
 }
 
