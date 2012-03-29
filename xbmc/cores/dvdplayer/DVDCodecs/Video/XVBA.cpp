@@ -2010,20 +2010,20 @@ CXvbaRenderPicture* COutput::ProcessPicture()
 //  if (!(cmd & DVP_FLAG_SKIP_PROC))
 //  {
     // transfer surface
-//    XVBA_Transfer_Surface_Input transInput;
-//    transInput.size = sizeof(transInput);
-//    transInput.session = m_config.xvbaSession;
-//    transInput.src_surface = m_processPicture.render->surface;
-//    transInput.target_surface = glSurface->glSurface;
-//    transInput.flag = m_field;
-//    { CSingleLock lock(*(m_config.apiSec));
-//      if (Success != g_XVBA_vtable.TransferSurface(&transInput))
-//      {
-//        CLog::Log(LOGERROR,"(XVBA) failed to transfer surface");
-//        m_xvbaError = true;
-//        return retPic;
-//      }
-//    }
+    XVBA_Transfer_Surface_Input transInput;
+    transInput.size = sizeof(transInput);
+    transInput.session = m_config.xvbaSession;
+    transInput.src_surface = m_processPicture.render->surface;
+    transInput.target_surface = glSurface->glSurface;
+    transInput.flag = m_field;
+    { CSingleLock lock(*(m_config.apiSec));
+      if (Success != g_XVBA_vtable.TransferSurface(&transInput))
+      {
+        CLog::Log(LOGERROR,"(XVBA) failed to transfer surface");
+        m_xvbaError = true;
+        return retPic;
+      }
+    }
 
     // make sure that transfer is completed
 //    uint64_t maxTimeout = 1000000000LL;

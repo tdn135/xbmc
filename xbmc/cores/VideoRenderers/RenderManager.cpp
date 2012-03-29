@@ -335,12 +335,12 @@ unsigned int CXBMCRenderManager::PreInit(CDVDClock *pClock)
   UpdateDisplayLatency();
 
   m_swapCount = 1;
-  std::string Vendor = g_Windowing.GetRenderVendor();
-  std::transform(Vendor.begin(), Vendor.end(), Vendor.begin(), ::tolower);
-  if (Vendor.compare(0, 3, "ati") == 0)
-  {
-    m_swapCount = 2;
-  }
+//  std::string Vendor = g_Windowing.GetRenderVendor();
+//  std::transform(Vendor.begin(), Vendor.end(), Vendor.begin(), ::tolower);
+//  if (Vendor.compare(0, 3, "ati") == 0)
+//  {
+//    m_swapCount = 2;
+//  }
   ResetRenderBuffer();
   m_bUseBuffering = false;
   m_overlays.SetNumBuffers(m_iNumRenderBuffers);

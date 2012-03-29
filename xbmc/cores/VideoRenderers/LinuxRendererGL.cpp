@@ -2669,7 +2669,7 @@ void CLinuxRendererGL::UploadXVBATexture(int index)
     CLog::Log(LOGWARNING,"CLinuxRendererGL::UploadXVBATexture no xvba texture, index: %d", index);
     return;
   }
-  xvba->Transfer();
+//  xvba->Transfer();
 
   fields[0][1].id = xvba->texture;
 
