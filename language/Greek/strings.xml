@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<<<<<<< HEAD
 <!--$Revision$--> <!-- Original translator: Ydatografida (ydatografida@gmail.com) / Last update (by CutSickAss): 02/04/2012 -->
-=======
-<!--$Revision$--> <!--Translator: Ydatografida (ydatografida@gmail.com) / Date of translation: 03/04/2012 / Last update (by CutSickAss): 22/03/2012 / Based on english strings version 1E+42-->
->>>>>>> bdc34eb... updated: Greek translations for core strings
 <strings>
   <string id="0">Εφαρμογές</string>
   <string id="1">Εικόνες</string>
@@ -715,11 +711,7 @@
   <string id="1000">- Προεπισκόπηση</string>
   <string id="1001">Αδυναμία σύνδεσης</string>
   <string id="1002">Το XBMC δεν μπόρεσε να συνδεθεί στο δίκτυο.</string>
-<<<<<<< HEAD
   <string id="1003">Αυτό μπορεί να συνέβη διότι το δίκτυο δεν είναι συνδεδεμένο.</string>
-=======
-  <string id="1003">Αυτό μπορεί να συνέβη διότι το δίκτυο δεν είναι συνδεμένο.</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="1004">Θέλετε παρ' όλα αυτά να το προσθέσετε;</string>
 
   <string id="1006">Διεύθυνση IP</string>
@@ -951,22 +943,14 @@
   <string id="12327">Εισαγωγή κεντρικού κωδικού</string>
   <string id="12328">Εισάγετε κωδικό ξεκλειδώματος</string>
   <string id="12329">ή πιέστε C για ακύρωση</string>
-<<<<<<< HEAD
   <string id="12330">Εισάγετε συνδυασμό πλήκτρων (combo) και</string>
-=======
-  <string id="12330">Εισάγετε συνδυασμό (combo) πλήκτρων και</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="12331">πιέστε 'Επιλογή', ή 'Επιστροφή' για ακύρωση</string>
   <string id="12332">Ορισμός κλειδώματος</string>
   <string id="12333">Ξεκλείδωμα</string>
   <string id="12334">Επανατοποθέτηση κλειδώματος</string>
   <string id="12335">Απομάκρυνση κλειδώματος</string>
   <string id="12337">Αριθμητικός κωδικός πρόσβασης</string>
-<<<<<<< HEAD
   <string id="12338">Συνδυασμός πλήκτρων (combo) του μοχλού</string>
-=======
-  <string id="12338">Συνδυασμός (combo) πλήκτρων του μοχλού</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="12339">Κωδικός πρόσβασης πλήρους κειμένου</string>
   <string id="12340">Εισαγωγή νέου κωδικού πρόσβασης</string>
   <string id="12341">Επανεισαγωγή νέου κωδικού πρόσβασης</string>
@@ -1064,11 +1048,7 @@
 
   <string id="13140">Έχουν ανιχνευτεί ενεργές συνδέσεις!</string>
   <string id="13141">Αν συνεχίσετε, μπορεί να χάσετε τον έλεγχο του XBMC.</string>
-<<<<<<< HEAD
   <string id="13142">Να διακοπεί η λειτουργία του απομακρυσμένου διακομιστή;</string>
-=======
-  <string id="13142">Να διακοπεί η λειτουργία του Απομακρυσμένου διακομιστή;</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
 
   <string id="13144">Αλλαγή λειτουργίας συσκευής Apple Remote;</string>
   <string id="13145">Εάν χρησιμοποιείτε τώρα τη συσκευή Apple Remote για να</string>
@@ -1138,11 +1118,7 @@
   <string id="13302">Παράκαμψη ταχύτητας ανεμιστήρα</string>
   <string id="13303">- Γραμματοσειρές</string>
   <string id="13304">Ενεργοποίηση αμφίδρομης κατεύθυνσης</string>
-<<<<<<< HEAD
   <string id="13305">Εμφάνιση ροής τίτλων ειδήσεων (RSS)</string>
-=======
-  <string id="13305">Εμφάνιση ροών τίτλων ειδήσεων (RSS)</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="13306">Εμφάνιση περιεχομένων αρχικού φακέλου</string>
   <string id="13307">Πρότυπο ονομασίας κομματιών</string>
   <string id="13308">Επιθυμείτε επανεκκίνηση του συστήματος</string>
@@ -1276,11 +1252,7 @@
 
   <string id="13600">Apple Remote</string>
 
-<<<<<<< HEAD
   <string id="13602">Έγκριση έναρξης του XBMC μέσω του χειριστηρίου</string>
-=======
-  <string id="13602">Έγκριση έναρξης του XBMC μέσου του χειριστηρίου</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="13603">Χρόνος καθυστέρησης ακολουθίας</string>
 
   <string id="13610">Ανενεργή</string>
@@ -1329,11 +1301,7 @@
   <string id="14038">Οι ρυθμίσεις του δικτύου άλλαξαν</string>
   <string id="14039">Το XBMC πρέπει να επανεκκινηθεί για να αλλάξουν</string>
   <string id="14040">οι ρυθμίσεις δικτύου. Να γίνει επανεκκίνηση;</string>
-<<<<<<< HEAD
   <string id="14041">Σύνδεση Διαδικτύου με περιορισμένη ταχύτητα</string>
-=======
-  <string id="14041">Σύνδεση Διαδικτύου με περιορισμένο εύρος ζώνης</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
 
   <string id="14043">- Τερματισμός κατά την αναπαραγωγή</string>
   <string id="14044">%i λεπτ.</string>
@@ -1482,11 +1450,7 @@
   <string id="15298">Να αρθεί ο αποκλεισμός για αυτό το κομμάτι;</string>
 
   <string id="15300">Η διαδρομή δε βρέθηκε</string>
-<<<<<<< HEAD
   <string id="15301">Απέτυχε η σύνδεση με το διακομιστή δικτύου</string>
-=======
-  <string id="15301">Απέτυχε η σύνδεση με τον διακομιστή δικτύου</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="15302">Δεν βρέθηκαν διακομιστές</string>
   <string id="15303">Δεν βρέθηκε η ομάδα εργασίας</string>
 
@@ -1648,21 +1612,13 @@
   <string id="20071">Έναρξη με νέες πηγές πολυμέσων</string>
   <string id="20072">Σιγουρευτείτε ότι ο επιλεγμένος φάκελος μπορεί να εγγραφεί</string>
   <string id="20073">και ότι το νέο όνομα είναι έγκυρο</string>
-<<<<<<< HEAD
   <string id="20074">Αξιολόγ. MPAA</string>
-=======
-  <string id="20074">Αξιολόγηση MPAA</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="20075">Εισαγωγή κωδικού κεντρικού κλειδώματος</string>
   <string id="20076">Αίτημα για κωδικό κεντρικού κλειδώματος στην εκκίνηση</string>
   <string id="20077">Ρυθμίσεις κελύφους</string>
   <string id="20078">- δεν έχει οριστεί σύνδεση -</string>
   <string id="20079">Ενεργοποίηση εφέ κίνησης</string>
-<<<<<<< HEAD
   <string id="20080">Απενεργοποίηση της Ροής Τίτλων Ειδήσεων (RSS) κατά την ακρόαση μουσικής</string>
-=======
-  <string id="20080">Απενεργοποίηση των Ροών Τίτλων Ειδήσεων (RSS) κατά την ακρόαση μουσικής</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="20081">Ενεργοποίηση πλήκτρων συντόμευσης</string>
   <string id="20082">Εμφάνιση των εφαρμογών στο κεντρικό μενού</string>
   <string id="20083">Εμφάνιση πληροφοριών για τη μουσική</string>
@@ -1971,11 +1927,7 @@
   <string id="21367">Ταινία &amp; εναλλακτικός φάκελος υποτίτλων</string>
   <string id="21368">Παράκαμψη γραμματοσειρών υποτίτλων ASS/SSA</string>
 
-<<<<<<< HEAD
   <string id="21369">Ενεργοποίηση ποντικιού και υποστήριξης οθόνης αφής</string>
-=======
-  <string id="21369">Ενεργοποίηση ποντικιού και υποστήριξης Οθόνης Αφής</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="21370">Ενεργοποίηση ήχων πλοήγησης κατά την αναπαραγωγή</string>
   <string id="21371">Μικρογραφία</string>
   <string id="21372">Περιοχή αναπαραγωγέα DVD</string>
@@ -2022,11 +1974,7 @@
   <string id="21413">Προεπιλεγμένο scraper ταινιών</string>
   <string id="21414">Προεπιλεγμένο scraper τηλεοπτικών σειρών</string>
   <string id="21415">Προεπιλεγμένο scraper μουσικών βίντεο</string>
-<<<<<<< HEAD
   <string id="21416">Ενεργοποίηση εναλλακτικής βάσει της γλώσσας του scraper</string>
-=======
-  <string id="21416">Ενεργοποίηση επαναφοράς (βάση της γλώσσας του scraper)</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="21417">- Ρυθμίσεις</string>
   <string id="21418">Πολύγλωσσο</string>
   <string id="21419">Δεν υπάρχει διαθέσιμο scraper</string>
@@ -2131,11 +2079,7 @@
   <string id="21879">Κωδικός χώρας</string>
   <string id="21880">Υπηρεσία πληροφόρησης</string>
   <string id="21881">Έγκριση ελέγχου του XBMC μέσω UPnP</string>
-<<<<<<< HEAD
   <string id="21882">Απόπειρα αποφυγής οδηγιών πριν το μενού DVD</string>
-=======
-  <string id="21882">Απόπειρα αποφυγής οδηγιών πριν από το μενού DVD</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="21883">Αποθηκευμένη μουσική</string>
   <string id="21884">Εύρεση πληροφοριών για όλους τους καλλιτέχνες</string>
   <string id="21885">Λήψη πληροφοριών για το άλμπουμ</string>
@@ -2150,11 +2094,7 @@
   <string id="21894">Δημιουργία</string>
   <string id="21895">Θεματολόγιο</string>
   <string id="21896">Διαλύθηκε</string>
-<<<<<<< HEAD
   <string id="21897">Πέθανε</string>
-=======
-  <string id="21897">Θάνατος</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="21898">Έτη ενεργής σταδιοδρομίας</string>
   <string id="21899">Ετικέτα</string>
   <string id="21900">Γέννηση/Δημιουργία</string>
@@ -2264,15 +2204,9 @@
   <string id="24042">Λήψη %i%%</string>
   <string id="24043">Διαθέσιμες ενημερώσεις</string>
   <string id="24044">Δεν πληρούνται οι εξαρτήσεις</string>
-<<<<<<< HEAD
   <string id="24045">Το πρόσθετο δεν έχει τη σωστή δομή</string>
   <string id="24046">Το %s χρησιμοποιείται από τα εγκατεστημένα πρόσθετα</string>
   <string id="24047">Αδυναμία απεγκατάστασης αυτού του πρόσθετου</string>
-=======
-  <string id="24045">Το Πρόσθετο δεν έχει τη σωστή δομή</string>
-  <string id="24046">Το %s χρησιμοποιείται από τα εγκατεστημένα Πρόσθετα</string>
-  <string id="24047">Αδυναμία απεγκατάστασης αυτού του Πρόσθετου</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="24048">Επαναφορά</string>
 
   <string id="24050">Διαθέσιμα πρόσθετα</string>
@@ -2352,11 +2286,7 @@
   <string id="33028">Δύση ηλίου</string>
   <string id="33029">Λεπτομέρειες</string>
   <string id="33030">Πρόγνωση</string>
-<<<<<<< HEAD
   <string id="33031">Ροή εξωφύλλων</string>
-=======
-  <string id="33031">Ροή εξώφυλλων</string>
->>>>>>> bdc34eb... updated: Greek translations for core strings
   <string id="33032">Μετάφραση κειμένου</string>
   <string id="33033">Κατηγορία λίστας χαρτών %s</string>
   <string id="33034">36ωρο</string>
@@ -2369,7 +2299,7 @@
   <string id="33051">Επιλογή</string>
   <string id="33052">Έλεγχος</string>
   <string id="33053">Ρύθμιση</string>
-  <string id="33054">Εποχές</string>
+  <string id="33054">Κύκλοι</string>
   <string id="33055">Εκτέλεση</string>
   <string id="33056">Παρακολούθηση</string>
   <string id="33057">Ακρόαση</string>
@@ -2391,7 +2321,7 @@
   <string id="33074">Για να εκτελεστεί η έκδοση %s απαιτείται</string>
   <string id="33075">η %s αναθεωρημένη έκδοση του XBMC ή νεώτερη.</string>
   <string id="33076">Παρακαλώ αναβαθμίστε το XBMC.</string>
-  <string id="33077">Δεν βρέθηκαν δεδομένα!</string>
+  <string id="33077">Δε βρέθηκαν δεδομένα!</string>
   <string id="33078">Επόμενη σελίδα</string>
   <string id="33079">Αγαπητό</string>
   <string id="33080">Απεχθές</string>
@@ -2468,8 +2398,8 @@
   <string id="36010"></string>
   <string id="36011">Δεν εντοπίστηκε η θύρα CEC. Ρυθμίστε την χειροκίνητα.</string>
   <string id="36012">Δεν εντοπίστηκε ο προσαρμογέας CEC.</string>
-  <string id="36013">Μη υποστηριζόμενη έκδοση libcec. Η %d είναι μεγαλύτερη από την έκδοση που το XBMC υποστηρίζει (%d)</string>
-  <string id="36014">Ο υπολογιστής σε κατάσταση αναμονής όταν κλείσει η τηλεόραση</string>
+  <string id="36013">Μη υποστηριζόμενη έκδοση libCEC. Η %d είναι μεγαλύτερη από την έκδοση που το XBMC υποστηρίζει (%d)</string>
+  <string id="36014"></string>
   <string id="36015">Αριθμός θύρας HDMI</string>
   <string id="36016">Συνδεδεμένη</string> <!-- max. 13 characters -->
   <string id="36017">O προσαρμογέας εντοπίσθηκε, αλλά η libCEC δεν είναι διαθέσιμη</string>
