@@ -100,10 +100,10 @@ void CGUIDialogAudioSubtitleSettings::CreateSettings()
   if (SupportsAudioFeature(IPC_AUD_OUTPUT_STEREO))
     AddBool(AUDIO_SETTINGS_OUTPUT_TO_ALL_SPEAKERS, 252, &g_settings.m_currentVideoSettings.m_OutputToAllSpeakers, AUDIO_IS_BITSTREAM(g_guiSettings.GetInt("audiooutput.mode")));
 
-  int settings[3] = { 338, 339, 420 }; //ANALOG, IEC958, HDMI
+  int settings[4] = { 338, 339, 420, 593 }; //ANALOG, IEC958, HDMI, BOTH
   m_outputmode = g_guiSettings.GetInt("audiooutput.mode");
   if (SupportsAudioFeature(IPC_AUD_SELECT_OUTPUT))
-    AddSpin(AUDIO_SETTINGS_DIGITAL_ANALOG, 337, &m_outputmode, 3, settings);
+    AddSpin(AUDIO_SETTINGS_DIGITAL_ANALOG, 337, &m_outputmode, 4, settings);
 
   AddSeparator(7);
   m_subtitleVisible = g_application.m_pPlayer->GetSubtitleVisible();
@@ -277,6 +277,7 @@ void CGUIDialogAudioSubtitleSettings::OnSettingChanged(SettingInfo &setting)
       case 0: g_guiSettings.SetInt("audiooutput.mode", AUDIO_ANALOG ); break;
       case 1: g_guiSettings.SetInt("audiooutput.mode", AUDIO_IEC958 ); bitstream = true; break;
       case 2: g_guiSettings.SetInt("audiooutput.mode", AUDIO_HDMI   ); bitstream = true; break;
+      case 3: g_guiSettings.SetInt("audiooutput.mode", AUDIO_BOTH   ); break;
     }
 
     EnableSettings(AUDIO_SETTINGS_OUTPUT_TO_ALL_SPEAKERS, bitstream);

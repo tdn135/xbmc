@@ -84,7 +84,12 @@ class TiXmlElement;
 #define AUDIO_ANALOG      0
 #define AUDIO_IEC958      1
 #define AUDIO_HDMI        2
+#ifdef TARGET_RASPBERRY_PI
+#define AUDIO_BOTH        3
+#define AUDIO_COUNT       4
+#else
 #define AUDIO_COUNT       3
+#endif
 #define AUDIO_IS_BITSTREAM(x) ((x) == AUDIO_IEC958 || (x) == AUDIO_HDMI)
 
 #define VIDEO_NORMAL 0
