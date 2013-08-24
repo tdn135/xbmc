@@ -4103,7 +4103,7 @@ void COMXPlayer::UpdatePlayState(double timeout)
     m_pDemuxer->GetChapterName(state.chapter_name);
 
     // TODO : workaround until omx clock handling is rewritten
-    if(m_playSpeed == DVD_PLAYSPEED_NORMAL)
+    if(m_playSpeed == DVD_PLAYSPEED_NORMAL && m_stamp != 0.0)
       state.time       = DVD_TIME_TO_MSEC(m_stamp);
     else
       state.time       = DVD_TIME_TO_MSEC(m_av_clock.GetClock() + m_offset_pts);
