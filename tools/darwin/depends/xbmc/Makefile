@@ -4,9 +4,9 @@ SOURCE=../../../../
 
 ifeq ($(DARWIN), ios)
 include ../Makefile.buildtools
-export USE_TEXTUREPACKER_NATIVE_ROOT=$(TOOLCHAIN)
+export NATIVE_ROOT=$(TOOLCHAIN)
 else
-export USE_TEXTUREPACKER_NATIVE_ROOT=$(PREFIX)
+export NATIVE_ROOT=$(PREFIX)
 endif
 
 # configuration settings
