@@ -597,7 +597,6 @@ case $host in
      use_dvdcss=no
      use_gles=yes
      use_cpu=cortex-a8
-     use_texturepacker_native=yes
      ARCH="arm-osx"
      use_arch="arm"
      PYTHON_VERSION="2.6"
@@ -610,7 +609,6 @@ case $host in
   *86*-apple-darwin*)
      use_joystick=no
      use_vtbdecoder=no
-     use_texturepacker_native=yes
      ARCH="x86-osx"
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_DARWIN -DTARGET_DARWIN_OSX -D_LINUX")
      ;;
@@ -632,7 +630,6 @@ case $host in
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_POWERPC64")
      ;;
   arm*-*-linux-gnu*)
-     use_texturepacker=no
      ARCH="arm"
      use_arch="arm"
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX")
@@ -660,7 +657,6 @@ AC_SUBST([DARWIN_NATIVE_ARCH])
 
 if test "$target_platform" = "target_android" ; then
   USE_ANDROID=1
-  use_texturepacker_native=yes
   webserver_checkdepends=yes
   AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -DTARGET_ANDROID")
   CFLAGS="$CFLAGS -Wno-psabi"
@@ -672,8 +668,6 @@ case $use_platform in
   raspberry-pi)
      target_platform=target_raspberry_pi
      use_neon=no
-     use_texturepacker=yes
-     use_texturepacker_native=yes
      use_arch="arm"
      use_cpu=arm1176jzf-s
      use_hardcoded_tables="yes"
@@ -2082,16 +2076,9 @@ else
   final_message="$final_message\n  Bluray:\tNo"
 fi
 
-USE_TEXTUREPACKER_NATIVE=0
 if test "x$use_texturepacker" != "xno"; then
   final_message="$final_message\n  TexturePacker:Yes"
   USE_TEXTUREPACKER=1
-  if test "x$use_texturepacker_native" = "xyes"; then
-    USE_TEXTUREPACKER_NATIVE=1
-    if [[ ! -d "$NATIVE_ROOT" ]]; then
-      NATIVE_ROOT=
-    fi
-  fi
 else
   final_message="$final_message\n  TexturePacker:No"
   USE_TEXTUREPACKER=0
@@ -2485,8 +2472,6 @@ AC_SUBST(USE_PULSE)
 AC_SUBST(USE_XRANDR)
 AC_SUBST(USE_ALSA)
 AC_SUBST(USE_TEXTUREPACKER)
-AC_SUBST(USE_TEXTUREPACKER_NATIVE)
-AC_SUBST(NATIVE_ROOT)
 AC_SUBST(USE_AIRTUNES)
 AC_SUBST(USE_LIBUDEV)
 AC_SUBST(USE_LIBUSB)
