@@ -11426,3 +11426,7 @@ msgctxt "#36042"
 msgid "Dual audio output"
 msgstr ""
 
+#: system/settings/rbp.xml
+msgctxt "#36043"
+msgid "Boost centre channel when downmixing"
+msgstr ""
