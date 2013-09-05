@@ -569,10 +569,15 @@ int CDecoder::Check(AVCodecContext* avctx)
   return 0;
 }
 
+bool CDecoder::CanSkipDeint()
+{
+  return m_vppth->CanSkipDeint();
+}
 
 CVPPThread::CVPPThread(CDisplayPtr& display, int width, int height)
   :CThread("VAAPI VPP Thread")
   ,m_stop(false)
+  ,m_skipDeinterlace(false)
 {
   m_vpp = new CVPP(display, width, height);
 }
@@ -720,6 +725,11 @@ int CVPPThread::GetOutputQueueSize()
   return m_output_queue.size();
 }
 
+bool CVPPThread::CanSkipDeint()
+{
+  return m_skipDeinterlace;
+}
+
 void CVPPThread::Flush()
 {
   CSingleLock lock(m_work_lock);
@@ -771,22 +781,22 @@ void CVPPThread::Process()
     if(currentFrame.valid)
     {
       bool isInterlaced = currentFrame.DVDPic.iFlags & DVP_FLAG_INTERLACED;
-      //if(currentFrame.DVDPic.iFlags & DVP_FLAG_DROPDEINT)
-      //  isInterlaced = false;
 
       EDEINTERLACEMODE   mode = g_settings.m_currentVideoSettings.m_DeinterlaceMode;
       EINTERLACEMETHOD method = g_settings.m_currentVideoSettings.m_InterlaceMethod;
 
-      if (m_vpp->DeintBobReady() && (method == VS_INTERLACEMETHOD_VAAPI_AUTO || method == VS_INTERLACEMETHOD_AUTO)
-       && (mode == VS_DEINTERLACEMODE_FORCE || (mode == VS_DEINTERLACEMODE_AUTO && isInterlaced)))
+      if (m_vpp->DeintBobReady() && !(currentFrame.DVDPic.iFlags & DVP_FLAG_DROPDEINT)
+        && (method == VS_INTERLACEMETHOD_VAAPI_AUTO || method == VS_INTERLACEMETHOD_AUTO)
+        && (mode == VS_DEINTERLACEMODE_FORCE || (mode == VS_DEINTERLACEMODE_AUTO && isInterlaced)))
       {
         bool topField = currentFrame.DVDPic.iFlags & DVP_FLAG_TOP_FIELD_FIRST;
-
+        m_skipDeinterlace = true;
         DoDeinterlacing(currentFrame, topField);
         DoDeinterlacing(currentFrame, !topField);
       }
       else
       {
+        m_skipDeinterlace = false;
         CVPPRenderPicture res;
         res.valid = true;
         res.DVDPic = currentFrame.DVDPic;
