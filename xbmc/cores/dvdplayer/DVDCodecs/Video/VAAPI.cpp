@@ -771,8 +771,8 @@ void CVPPThread::Process()
     if(currentFrame.valid)
     {
       bool isInterlaced = currentFrame.DVDPic.iFlags & DVP_FLAG_INTERLACED;
-      if(currentFrame.DVDPic.iFlags & DVP_FLAG_DROPDEINT)
-        isInterlaced = false;
+      //if(currentFrame.DVDPic.iFlags & DVP_FLAG_DROPDEINT)
+      //  isInterlaced = false;
 
       EDEINTERLACEMODE   mode = g_settings.m_currentVideoSettings.m_DeinterlaceMode;
       EINTERLACEMETHOD method = g_settings.m_currentVideoSettings.m_InterlaceMethod;

@@ -181,7 +181,7 @@ public:
   virtual void Close();
   virtual const std::string Name() { return "vaapi"; }
   virtual CCriticalSection* Section() { if(m_display) return m_display.get(); else return NULL; }
-  virtual bool CanSkipDeint() { return true; }
+  virtual bool CanSkipDeint() { return false; }
 
   int   GetBuffer(AVCodecContext *avctx, AVFrame *pic);
   void  RelBuffer(AVCodecContext *avctx, AVFrame *pic);
