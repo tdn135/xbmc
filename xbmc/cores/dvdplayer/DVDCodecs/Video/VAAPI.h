@@ -134,6 +134,7 @@ public:
 
   void InsertNewFrame(CVPPDecodedPicture &new_frame);
   void WaitForOutput(unsigned long msec = 0);
+  virtual bool CanSkipDeint();
   CVPPRenderPicture GetOutputPicture();
 
   int GetInputQueueSize();
@@ -153,6 +154,7 @@ protected:
   CVPP *m_vpp;
 
   bool m_stop;
+  bool m_skipDeinterlace;
 
   CCriticalSection m_work_lock;
 
@@ -181,7 +183,7 @@ public:
   virtual void Close();
   virtual const std::string Name() { return "vaapi"; }
   virtual CCriticalSection* Section() { if(m_display) return m_display.get(); else return NULL; }
-  virtual bool CanSkipDeint() { return false; }
+  virtual bool CanSkipDeint();
 
   int   GetBuffer(AVCodecContext *avctx, AVFrame *pic);
   void  RelBuffer(AVCodecContext *avctx, AVFrame *pic);
