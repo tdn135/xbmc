@@ -57,7 +57,6 @@ COMXImage::COMXImage()
   m_width         = 0;
   m_height        = 0;
 
-  m_is_open       = false;
   m_decoded_buffer = NULL;
   m_encoded_buffer = NULL;
 
@@ -342,8 +341,6 @@ OMX_IMAGE_CODINGTYPE COMXImage::GetCodingType()
       else if(marker == M_APP1)
       {
         int readBits = 2;
-        bool bMotorolla = false;
-        bool bError = false;
 
         // Exif header
         if(READ32(p) == 0x45786966)
